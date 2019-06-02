@@ -55,7 +55,7 @@ const productos = [
     },
 ]
 
-// SERVIR APIS
+// SERVIR APIS 
 
 // ENDPOINT 1 LLAMAR LISTA DE PRODUCTOS
 app.get('/api/productox/', (req, res) => {
@@ -85,7 +85,7 @@ app.post('/api/producto/crear', (req, res) => {
 // ENDPOINT 2 - METODO DELETE ... ELIMINAR PRODUCTO
 
 
-
+//TEST
 // LEVANTAR RUTA DE ASSETS && LEVANTAR INDEX.HTML
 app.use("/", express.static(path.join(__dirname, "../client")));
 app.get("/*", (req, res) => { res.sendFile(path.resolve(__dirname, "../client", "index.html")); });
