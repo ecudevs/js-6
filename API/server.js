@@ -82,10 +82,26 @@ app.post('/api/producto/crear', (req, res) => {
     })
 })
 
-// ENDPOINT 2 - METODO DELETE ... ELIMINAR PRODUCTO
+// ENDPOINT 3 - METODO DELETE ... ELIMINAR PRODUCTO
+app.delete('/api/producto/:id',(req,res)=>{
+    const id = parseInt(req.params.id, 10);
+    console.log("el id es: "+id);
+    let eliminado = false;
+    productos.map((producto,index)=>{
+        if(producto.id === id ){
+            /*Comando para remover de un arreglo */productos.splice(index, 1);
+            eliminado = true;
+        }
+    });
+    if(eliminado){
+        return res.status(200).send({ success: true, message: 'Producto eliminado', productos:productos });
+    }
+    else{
+        return res.status(404).send({ success: false, message: `No existe: ${id}`});
+    }
+});
 
 
-//TEST
 
 // LEVANTAR RUTA DE ASSETS && LEVANTAR INDEX.HTML
 app.use("/", express.static(path.join(__dirname, "../client")));

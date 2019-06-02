@@ -10,7 +10,9 @@ function dibujarProductos(productos) {
         
         <img src="${productos[i].foto}" class="card-img-top ps-imagen" alt="...">
         <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary" >eliminar</button>
+        <button type="button" class="btn btn-secondary" 
+        onclick=deleteProductos(${productos[i].id})
+        >eliminar</button>
         <button type="button" class="btn btn-secondary" >editar</button>
         </div>
         <div class="card-body">
@@ -29,10 +31,6 @@ function dibujarProductos(productos) {
 
 
 
-function deleteProductos(idProducto){
-    alert(idProducto);
-    
-}
 
 function getProductos() {
     $.ajax({
@@ -59,6 +57,23 @@ function postProductos(producto) {
         }
     })
 }
+
+
+function deleteProductos(idProducto){
+    $.ajax({
+        url: `/api/producto/${idProducto}`,
+        type: 'DELETE',
+        success: function(response, status) {
+            debugger
+            if (status === 'success' && response.productos) {
+                dibujarProductos(response.productos)
+            }
+        }
+    });
+
+
+}
+
 
 
 
