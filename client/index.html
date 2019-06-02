@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <title>Tienda||Home</title>
+            <!-- MIS ARCHIVOS CSS -->
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+            integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+            <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+            <!-- <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+            <link rel ='stylesheet' href='https://demos.creative-tim.com/material-kit/assets/css/material-kit.min.css?v=2.0.5'> -->
+            <link rel="stylesheet" href="./assets/css/index.css">
+        </head>
+<body>
+
+
+    <!---- COMIENZO A ETIQUETAR -->
+    <div class='ps-header'>
+        <button onclick="getProductos()" class="btn btn-primary m-4 ">Cargar productos</button>
+    </div>
+
+    <div class='container-fluid'>
+        <div class='row ps-body'>
+
+
+
+            <div class='col-md-9 col-xl-9 col-sm-12 ps-izquierda'>
+
+                <!---Nueva clase-->
+
+                <!-- Button trigger modal -->
+                <h1>
+                    Productos
+                    <button type="button" class="btn btn-primary ps-btn-circulo" data-toggle="modal" data-target="#modalCrearProducto">
+                        <i class="fas fa-plus"></i>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalCrearProducto" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Crear producto</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <form id='formulario_productos'>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Foto</label>
+                                            <input type="text" class="form-control" name="fotoUrl"
+                                                placeholder="Foto Url">
+                                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Titulo</label>
+                                            <input type="text" class="form-control" name="titulo"
+                                                placeholder="Escribe un nombre para tu producto">
+                                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Descripcion</label>
+                                            <textarea class="form-control" name="descripcion" rows="4"></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Precio</label>
+                                            <input type="text" class="form-control" name="precio"
+                                                placeholder="Precio en $$">
+                                        </div>
+
+
+                                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </h1>
+
+
+
+
+
+                <div id='model_productos' class='row'>
+                </div>
+            </div>
+
+            <div class='col-md-3 col-xl-3 col-sm-12 ps-derecha'>
+                <div id='model_servicios'></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class='ps-footer'></div>
+
+    <!---- TERMINO DE ETIQUETAR -->
+
+
+
+
+    <!-- MIS referencias JAVASCRIPT -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <script src='./javascript/productos.js'></script>
+    <script>
+        $("#formulario_productos").submit(function (e) {
+            e.preventDefault();
+            var values = {};
+            $.each($('#formulario_productos').serializeArray(), function (i, field) {
+                values[field.name] = field.value;
+            });
+            postProductos(values);
+        });
+    </script>
+
+    <script>
+        $( document ).ready(function() {
+                getProductos();
+        });
+    </script>
+
+</body>
+
+</html>

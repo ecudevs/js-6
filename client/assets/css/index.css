@@ -1,0 +1,72 @@
+/*
+ESTILOS QUE SURTEN EFECTO EN ETIQUETAS HTML SIN SER LLAMADOS 
+EJEMPLO: 
+body{...} >> para la etiqueta body
+ul{...} >> para la etiqueta ul
+h1 h2 h3 h4 h5 {...}
+div {...} >> para la etiqueta div
+*/
+body{
+    background-color: #ffffff;
+}
+
+/* 
+ESTILOS QUE SURTEN EFECTO SOLO DONDE LOS NECESITEMOS UTILIZAMOS CLASES
+ .nombre-estilo { ... }  > NOTEN EL PUNTO POR DELANTE
+ lo invocamos dentro de nuestro html asi class='nombre-estilo' sin el punto
+*/
+.ps-header{
+
+    background-color: black;
+}
+.ps-footer{
+    /* height: 15vh; */
+    background-color: rgb(61, 54, 54);
+}
+.ps-body{
+    /* background-color: rgb(94, 91, 91); */
+    /* padding: 2em; */
+}
+
+
+
+
+.ps-imagen{
+   
+    height:25vh;
+    object-fit: cover;
+}
+
+.ps-card{
+
+    margin:.5em 0 .9em 0;
+    overflow: hidden;
+    border-radius:12px;
+    /* 
+    margin-bottom: 12px;
+    margin-top:12px;
+    margin-left:12px;
+    margint-right:12px; */ 
+}
+
+.ps-izquierda{
+    padding:2em;
+    max-height: 100vh;
+    overflow: scroll;
+    
+}
+
+
+.ps-derecha{
+    max-height: 100vh;
+    overflow: scroll;
+    /* overflow: scroll;
+    z-index: 1; Stay on top */
+}
+
+.ps-btn-circulo{
+    border-radius: 50%;
+    height:50px;
+    width:50px;
+    padding:0 !important;
+}
