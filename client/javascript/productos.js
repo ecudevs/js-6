@@ -13,7 +13,9 @@ function dibujarProductos(productos) {
         <button type="button" class="btn btn-secondary" 
         onclick=deleteProductos(${productos[i].id})
         >eliminar</button>
-        <button type="button" class="btn btn-secondary" >editar</button>
+        <button type="button" class="btn btn-secondary" 
+        onclick=editarProducto(${productos[i].id})
+        >editar</button>
         </div>
         <div class="card-body">
         <h4 class="card-title">${productos[i].titulo}</h4>
@@ -59,6 +61,24 @@ function postProductos(producto) {
 }
 
 
+function editarProducto(idProducto){
+    $.ajax({
+        url: `/api/producto/${idProducto}`,
+        type: 'GET',
+        success: function(response, status) {
+            const producto = response.producto;
+                $("#idProducto").val(producto.id)
+                $("#fotoUrlProducto").val(producto.foto)
+                $("#tituloProducto").val(producto.titulo)
+                $("#descripcionProducto").val(producto.descripcion)
+                $("#precioProducto").val(producto.precio)
+
+                $("#modalCrearProducto").modal()
+
+        }
+    });
+}
+
 function deleteProductos(idProducto){
     $.ajax({
         url: `/api/producto/${idProducto}`,
@@ -70,9 +90,8 @@ function deleteProductos(idProducto){
             }
         }
     });
-
-
 }
+
 
 
 

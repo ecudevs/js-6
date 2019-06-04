@@ -101,6 +101,27 @@ app.delete('/api/producto/:id',(req,res)=>{
     }
 });
 
+// ENDPOINT 5 GET PRODUCTO POR ID 
+app.get('/api/producto/:id', (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    let encontre = false;
+    let producto={};
+    console.log('id:'+id)
+    productos.map((item,index)=>{
+             if(item.id === id ){
+            encontre=true; 
+            producto= item;
+        }
+    });
+    if(encontre){
+        return res.status(200).send({ success: true, message: 'existe', producto:producto });
+    }
+    else{
+        return res.status(404).send({ success: false, message: `No existe: ${id}`});
+    }
+
+})
+
 
 
 // LEVANTAR RUTA DE ASSETS && LEVANTAR INDEX.HTML
