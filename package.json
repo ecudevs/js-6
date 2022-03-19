@@ -2,7 +2,7 @@
   "name": "proyectoclase",
   "version": "1.0.0",
   "description": "proyecto para el curso de javascript",
-  "main": "index.js",
+  "main": "API/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon API/server.js",
